@@ -3,7 +3,6 @@ ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-MAINTAINER Vincent Voyer <vincent@zeroload.net>
 RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common wget
 RUN add-apt-repository -y ppa:mozillateam/firefox-next
@@ -30,7 +29,7 @@ RUN mkdir -p /home/seleuser/chrome
 RUN chown -R seleuser /home/seleuser
 RUN chgrp -R seleuser /home/seleuser
 
-ADD ./scripts/ /home/root/scripts
+ADD ./start.sh /home/root/scripts/
 RUN npm install -g \
   selenium-standalone@5.0.0 \
   phantomjs-prebuilt@2.1.4 && \
